@@ -1,0 +1,52 @@
+{
+  "name": "@divotion/tinymce-plugin-scaffold",
+  "version": "1.0.0",
+  "description": "A scaffolding project for developing TinyMCE plugins with modern JavaScript tooling.",
+  "main": "dist/plugins/example/plugin.min.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "NODE_ENV=production rollup -c",
+    "build:dev": "NODE_ENV=development rollup -c",
+    "build:demo": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist && rm -rf demo/public/dist",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tinymce",
+    "plugin"
+  ],
+  "author": "Dennis de Vries <dennis.de.vries@divotion.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.14.0",
+  "files": [
+    "dist",
+    "demo/public/dist"
+  ],
+  "devDependencies": {
+    "@eslint/css": "^0.10.0",
+    "@eslint/js": "^9.33.0",
+    "@eslint/markdown": "^7.1.0",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.3.0",
+    "prettier": "3.6.2",
+    "rollup": "^4.46.2",
+    "rollup-plugin-delete": "^3.0.1",
+    "vite": "^7.1.1"
+  },
+  "peerDependencies": {
+    "tinymce": "^7.9.1"
+  },
+  "bugs": {
+    "url": "https://github.com/ddevries-divotion/tinymce-plugin-scaffold/issues"
+  }
+}
