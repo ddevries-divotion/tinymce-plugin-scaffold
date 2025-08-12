@@ -1,6 +1,6 @@
 {
   "name": "@divotion/tinymce-plugin-scaffold",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A scaffolding project for developing TinyMCE plugins with modern JavaScript tooling.",
   "main": "dist/plugins/example/plugin.min.js",
   "exports": {
@@ -59,7 +59,7 @@
     "vite": "^7.1.1"
   },
   "peerDependencies": {
-    "tinymce": "^7.9.1"
+    "tinymce": "^8.0.1"
   },
   "bugs": {
     "url": "https://github.com/ddevries-divotion/tinymce-plugin-scaffold/issues"
