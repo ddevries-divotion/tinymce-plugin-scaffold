@@ -4,6 +4,10 @@
   "description": "A scaffolding project for developing TinyMCE plugins with modern JavaScript tooling.",
   "main": "dist/plugins/example/plugin.min.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddevries-divotion/tinymce-plugin-scaffold.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "NODE_ENV=production rollup -c",
