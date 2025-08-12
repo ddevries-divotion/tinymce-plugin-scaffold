@@ -6,7 +6,8 @@ A scaffolding project for developing TinyMCE plugins with modern JavaScript tool
 
 This project provides a complete development environment for building TinyMCE plugins with:
 
-- Modern ES6+ JavaScript
+- Modern ES6+ JavaScript and TypeScript support
+- Dual build system (JavaScript and TypeScript)
 - Rollup bundling for production builds
 - Vite for fast development and demo serving
 - ESLint and Prettier for code quality
@@ -19,15 +20,24 @@ This project provides a complete development environment for building TinyMCE pl
 │   └── plugins/
 │       └── example/
 │           └── main/
-│               └── js/
-│                   ├── Main.js          # Plugin entry point
-│                   ├── Plugin.js        # Main plugin registration
+│               ├── js/                  # JavaScript source files
+│               │   ├── Main.js          # Plugin entry point
+│               │   ├── Plugin.js        # Main plugin registration
+│               │   ├── api/
+│               │   │   └── Commands.js  # Editor commands
+│               │   ├── core/
+│               │   │   └── Utils.js     # Utility functions
+│               │   └── ui/
+│               │       └── Buttons.js   # UI components (buttons, menu items)
+│               └── ts/                  # TypeScript source files
+│                   ├── Main.ts          # Plugin entry point
+│                   ├── Plugin.ts        # Main plugin registration
 │                   ├── api/
-│                   │   └── Commands.js  # Editor commands
+│                   │   └── Commands.ts  # Editor commands
 │                   ├── core/
-│                   │   └── Utils.js     # Utility functions
+│                   │   └── Utils.ts     # Utility functions
 │                   └── ui/
-│                       └── Buttons.js   # UI components (buttons, menu items)
+│                       └── Buttons.ts   # UI components (buttons, menu items)
 ├── demo/                                # Demo application
 │   ├── index.html                       # Demo HTML page
 │   └── src/
@@ -80,13 +90,46 @@ Build the plugin for production:
 pnpm build
 ```
 
-This creates minified plugin files in:
-- `dist/plugins/example/plugin.min.js` - Production build
-- `demo/public/dist/plugins/example/plugin.min.js` - Demo build
+This creates minified plugin files for both JavaScript and TypeScript versions:
+- `dist/plugins/example/plugin.min.js` - JavaScript production build
+- `dist/plugins/example/plugin-ts.min.js` - TypeScript production build
+- `demo/public/dist/plugins/example/plugin.min.js` - JavaScript demo build
+- `demo/public/dist/plugins/example/plugin-ts.min.js` - TypeScript demo build
 
 Build the demo application:
 ```bash
 pnpm build:demo
+```
+
+### JavaScript vs TypeScript Builds
+
+This project supports both JavaScript and TypeScript development:
+
+- **JavaScript Build**: Built from `src/plugins/example/main/js/`
+  - Output: `plugin.js` / `plugin.min.js`
+  - Use for standard JavaScript development
+
+- **TypeScript Build**: Built from `src/plugins/example/main/ts/`
+  - Output: `plugin-ts.js` / `plugin-ts.min.js`
+  - Includes type checking and modern TypeScript features
+  - Custom TinyMCE type definitions in `src/types/tinymce.d.ts`
+
+Both builds are created simultaneously when running `pnpm build` or `pnpm build:dev`. You can use either version in your TinyMCE configuration:
+
+```javascript
+// Use JavaScript version
+tinymce.init({
+  external_plugins: {
+    example: 'path/to/plugin.min.js'
+  }
+});
+
+// Use TypeScript version
+tinymce.init({
+  external_plugins: {
+    example: 'path/to/plugin-ts.min.js'
+  }
+});
 ```
 
 ### Scripts
@@ -164,20 +207,6 @@ tinymce.init({
 - **ESLint**: JavaScript linting
 - **Prettier**: Code formatting
 - **pnpm**: Fast, disk space efficient package manager
-
-## Future Enhancements
-
-### TypeScript Support
-
-TypeScript support will be added in a future version of this scaffolding project. This will include:
-
-- TypeScript configuration and build setup
-- Type definitions for TinyMCE APIs
-- Enhanced development experience with IntelliSense
-- Type-safe plugin development
-- Automatic type checking in the build process
-
-Stay tuned for updates that will make TinyMCE plugin development even more robust with static typing!
 
 ## License
 

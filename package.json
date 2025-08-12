@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "A scaffolding project for developing TinyMCE plugins with modern JavaScript tooling.",
   "main": "dist/plugins/example/plugin.min.js",
+  "exports": {
+    "./js": "./dist/plugins/example/plugin.min.js",
+    "./ts": "./dist/plugins/example/plugin-ts.min.js",
+    ".": "./dist/plugins/example/plugin.min.js"
+  },
   "type": "module",
   "repository": {
     "type": "git",
@@ -39,12 +44,18 @@
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.3.0",
     "prettier": "3.6.2",
     "rollup": "^4.46.2",
     "rollup-plugin-delete": "^3.0.1",
+    "tinymce": "^8.0.1",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.2",
     "vite": "^7.1.1"
   },
   "peerDependencies": {
