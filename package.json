@@ -4,9 +4,10 @@
   "description": "A scaffolding project for developing TinyMCE plugins with modern JavaScript tooling.",
   "main": "dist/plugins/example/plugin.min.js",
   "exports": {
-    "./js": "./dist/plugins/example/plugin.min.js",
-    "./ts": "./dist/plugins/example/plugin-ts.min.js",
-    ".": "./dist/plugins/example/plugin.min.js"
+    ".": "./dist/plugins/example/plugin.min.js",
+    "./example": "./dist/plugins/example/plugin.min.js",
+    "./example/js": "./dist/plugins/example/plugin.min.js",
+    "./example/ts": "./dist/plugins/example/plugin-ts.min.js"
   },
   "type": "module",
   "repository": {
@@ -15,9 +16,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "build:dev": "cross-env NODE_ENV=development rollup -c",
+    "build": "cross-env NODE_ENV=production rollup -c && pnpm update-exports",
+    "build:dev": "cross-env NODE_ENV=development rollup -c && pnpm update-exports",
     "build:demo": "vite build",
+    "update-exports": "node scripts/update-exports.js",
     "preview": "vite preview",
     "clean": "rm -rf dist && rm -rf demo/public/dist",
     "format": "prettier . --write",
@@ -35,7 +37,8 @@
   "packageManager": "pnpm@10.20.0",
   "files": [
     "dist",
-    "demo/public/dist"
+    "demo/public/dist",
+    "scripts"
   ],
   "devDependencies": {
     "@eslint/css": "^0.14.0",
@@ -60,7 +63,7 @@
     "vite": "^7.1.12"
   },
   "peerDependencies": {
-    "tinymce": "^8.0.1"
+    "tinymce": "^8.2.0"
   },
   "bugs": {
     "url": "https://github.com/ddevries-divotion/tinymce-plugin-scaffold/issues"
